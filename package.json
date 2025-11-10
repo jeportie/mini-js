@@ -1,0 +1,37 @@
+{
+    "name": "@jeportie/mini-js",
+    "version": "0.0.1",
+    "private": false,
+    "type": "module",
+    "description": "MiniJs umbrella package (router + fetch + future utils)",
+    "license": "MIT",
+    "workspaces": [
+        "mini-fetch",
+        "mini-router"
+    ],
+    "exports": {
+        ".": "./index.js",
+        "./fetch": "./mini-fetch/dist/index.js",
+        "./spa": "./mini-router/index.js"
+    },
+    "files": [
+        "index.js",
+        "mini-fetch/dist",
+        "mini-router"
+    ],
+    "scripts": {
+        "build": "npm run build -w @jeportie/mini-fetch",
+        "prepare": "npm run build"
+    },
+    "keywords": [
+        "spa",
+        "router",
+        "fetch",
+        "auth",
+        "vanilla"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/jeportie/mini-js.git"
+    }
+}
