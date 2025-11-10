@@ -23,10 +23,8 @@
         "mini-utils/dist"
     ],
     "scripts": {
-        "build": "npm run _build_fetch && npm run _build_utils",
-        "prepare": "npm run build",
-        "_build_fetch": "npm run build -w @jeportie/mini-fetch || npm --prefix packages/mini-fetch run build",
-        "_build_utils": "npm run build -w @jeportie/mini-utils || npm --prefix packages/mini-utils run build"
+        "build": "npm --prefix mini-fetch run build && npm --prefix mini-utils run build",
+        "prepare": "npm run build"
     },
     "keywords": [
         "spa",
