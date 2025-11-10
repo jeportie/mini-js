@@ -6,7 +6,7 @@
 //   By: jeportie <jeportie@42.fr>                  +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
 //   Created: 2025/10/13 23:59:30 by jeportie          #+#    #+#             //
-//   Updated: 2025/10/14 00:04:56 by jeportie         ###   ########.fr       //
+//   Updated: 2025/11/10 10:19:12 by jeportie         ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
@@ -27,8 +27,7 @@
  * });
  * ```
  */
-
-interface resolveElementParams {
+export interface ResolveElementParams<T extends HTMLElement> {
     el?: T | null;
     getEl?: () => T | null;
     selector?: string;
@@ -38,12 +37,13 @@ export function resolveElement<T extends HTMLElement>({
     el,
     getEl,
     selector,
-}: resolveElementParams) {
+}: ResolveElementParams<T>): T | null {
     if (typeof getEl === "function") {
-        const result = getEl();
-        if (result) return result;
+        const r = getEl();
+        if (r) return r;
     }
     if (el) return el;
     if (selector) return document.querySelector<T>(selector);
     return null;
 }
+

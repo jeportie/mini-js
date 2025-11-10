@@ -7,28 +7,34 @@
     "license": "MIT",
     "workspaces": [
         "mini-fetch",
-        "mini-router"
+        "mini-router",
+        "mini-utils"
     ],
     "exports": {
         ".": "./index.js",
         "./fetch": "./mini-fetch/dist/index.js",
-        "./spa": "./mini-router/index.js"
+        "./spa": "./mini-router/index.js",
+        "./utils": "./mini-utils/dist/index.js"
     },
     "files": [
         "index.js",
         "mini-fetch/dist",
-        "mini-router"
+        "mini-router",
+        "mini-utils/dist"
     ],
     "scripts": {
-        "build": "npm run build -w @jeportie/mini-fetch",
-        "prepare": "npm run build"
+        "build": "npm run _build_fetch && npm run _build_utils",
+        "prepare": "npm run build",
+        "_build_fetch": "npm run build -w @jeportie/mini-fetch || npm --prefix packages/mini-fetch run build",
+        "_build_utils": "npm run build -w @jeportie/mini-utils || npm --prefix packages/mini-utils run build"
     },
     "keywords": [
         "spa",
         "router",
         "fetch",
         "auth",
-        "vanilla"
+        "vanilla",
+        "utils"
     ],
     "repository": {
         "type": "git",
